@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registre des Runes - Corps des Pourfendeurs</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header__logo">
+                <span class="header__icon">⚔️</span>
+                <div class="header__text">
+                    <h1 class="header__title">Registre des Runes</h1>
+                    <p class="header__subtitle">Corps des Pourfendeurs - Système de Gestion</p>
+                </div>
+                <span class="header__seal">🗡️</span>
+            </div>
+            
+            <nav class="nav">
+                <button class="nav__btn nav__btn--active" data-section="home">
+                    <span class="nav__icon">🏠</span>
+                    Accueil
+                </button>
+                <button class="nav__btn" data-section="declare">
+                    <span class="nav__icon">📝</span>
+                    Déclaration
+                </button>
+                <button class="nav__btn" data-section="inventory">
+                    <span class="nav__icon">📦</span>
+                    Inventaire Public
+                </button>
+                <button class="nav__btn" data-section="donations">
+                    <span class="nav__icon">💎</span>
+                    Dons &amp; Points
+                </button>
+                <button class="nav__btn" data-section="admin">
+                    <span class="nav__icon">👑</span>
+                    Administration
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <!-- Section Accueil -->
+            <section id="home" class="section section--active">
+                <div class="welcome">
+                    <div class="welcome__banner">
+                        <h2 class="welcome__title">Système de Gestion des Runes</h2>
+                        <p class="welcome__text">
+                            Déclarez vos fragments de runes et consultez l'inventaire public du Corps des Pourfendeurs.
+                        </p>
+                    </div>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-card__number" id="totalMembers">0</div>
+                            <div class="stat-card__label">Pourfendeurs Enregistrés</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-card__number" id="totalFragments">0</div>
+                            <div class="stat-card__label">Fragments Déclarés</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-card__number" id="totalSets">0</div>
+                            <div class="stat-card__label">Sets Complets</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-card__number" id="totalTypes">0</div>
+                            <div class="stat-card__label">Types Différents</div>
+                        </div>
+                    </div>
+
+                    <div class="system-info">
+                        <div class="info-grid">
+                            <div class="info-card">
+                                <h3>Types de Runes</h3>
+                                <div class="rune-types-list">
+                                    <div class="rune-type-item">🪖 Armure</div>
+                                    <div class="rune-type-item">⚔️ Dégât</div>
+                                    <div class="rune-type-item">⏱️ Réduction de cooldown</div>
+                                    <div class="rune-type-item">🛡️ Réduction de dégât</div>
+                                    <div class="rune-type-item">❤️ Vie</div>
+                                    <div class="rune-type-item">⚡ Vitesse</div>
+                                    <div class="rune-type-item">🩸 Vol de vie</div>
+                                </div>
+                            </div>
+                            
+                            <div class="info-card">
+                                <h3>Raretés Déclarables</h3>
+                                <div class="rarity-list">
+                                    <div class="rarity-item rarity-item--rare">Rare - 10-50 pts</div>
+                                    <div class="rarity-item rarity-item--epique">Épique - 40-250 pts</div>
+                                    <div class="rarity-item rarity-item--legendaire">Légendaire - 100-500 pts</div>
+                                </div>
+                            </div>
+
+                            <div class="info-card">
+                                <h3>Système de Fragments</h3>
+                                <div class="fragment-info">
+                                    <p>Chaque rune se compose de 4 fragments:</p>
+                                    <div class="fragment-parts">
+                                        <span class="fragment-part">1/4</span>
+                                        <span class="fragment-part">2/4</span>
+                                        <span class="fragment-part">3/4</span>
+                                        <span class="fragment-part">4/4</span>
+                                    </div>
+                                    <p>Un set complet nécessite les 4 parties.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Déclaration -->
+            <section id="declare" class="section">
+                <div class="declare-section">
+                    <h2 class="section__title">Déclaration de Fragments</h2>
+                    <p class="declare-info">Seuls les fragments <strong>Rare, Épique et Légendaire</strong> peuvent être déclarés.</p>
+                    
+                    <form id="declarationForm" class="declaration-form card">
+                        <div class="card__body">
+                            <div class="identity-section">
+                                <h3>Identification du Pourfendeur</h3>
+                                <div class="identity-grid">
+                                    <div class="form-group">
+                                        <label class="form-label" for="slayerFirstName">
+                                            <span class="form-label__icon">🗡️</span>
+                                            Prénom
+                                        </label>
+                                        <input type="text" id="slayerFirstName" class="form-control" placeholder="Votre prénom" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label" for="slayerLastName">
+                                            <span class="form-label__icon">🗡️</span>
+                                            Nom
+                                        </label>
+                                        <input type="text" id="slayerLastName" class="form-control" placeholder="Votre nom" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="fragments-section">
+                                <h3>Mes Fragments</h3>
+                                <div id="fragmentInputs" class="fragment-inputs">
+                                    <!-- Les inputs de fragments seront générés dynamiquement -->
+                                </div>
+                                <button type="button" id="addFragment" class="btn btn--secondary btn--sm">+ Ajouter des fragments</button>
+                            </div>
+
+                            <button type="submit" class="btn btn--primary btn--full-width">
+                                <span class="btn__icon">📝</span>
+                                Enregistrer la Déclaration
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Section Inventaire Public -->
+            <section id="inventory" class="section">
+                <h2 class="section__title">Inventaire Public</h2>
+                
+                <div class="inventory-info card">
+                    <div class="card__body">
+                        <p><strong>Note:</strong> Cet inventaire agrège tous les fragments déclarés de manière anonyme. Les identités des pourfendeurs ne sont pas révélées.</p>
+                    </div>
+                </div>
+                
+                <div class="filters card">
+                    <div class="card__body">
+                        <div class="filters__row">
+                            <select id="filterType" class="form-control">
+                                <option value="">Tous les types</option>
+                            </select>
+                            <select id="filterRarity" class="form-control">
+                                <option value="">Toutes les raretés</option>
+                                <option value="Rare">Rare</option>
+                                <option value="Épique">Épique</option>
+                                <option value="Légendaire">Légendaire</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="public-inventory card">
+                    <div class="card__body">
+                        <table id="publicInventoryTable" class="table">
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Rareté</th>
+                                    <th>1/4</th>
+                                    <th>2/4</th>
+                                    <th>3/4</th>
+                                    <th>4/4</th>
+                                    <th>Sets Complets</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Données générées dynamiquement -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Dons & Points -->
+            <section id="donations" class="section">
+                <h2 class="section__title">Dons &amp; Points</h2>
+                
+                <div class="donation-info card">
+                    <div class="card__body">
+                        <p>Système de points basé sur la valeur des fragments de runes. Les points peuvent être échangés contre des récompenses.</p>
+                    </div>
+                </div>
+
+                <div class="points-grid">
+                    <div class="points-card">
+                        <h3>Valeur des Fragments</h3>
+                        <div class="points-list">
+                            <div class="point-item point-item--rare">
+                                <span class="point-rarity">Fragment Rare</span>
+                                <span class="point-value">10 points</span>
+                            </div>
+                            <div class="point-item point-item--epique">
+                                <span class="point-rarity">Fragment Épique</span>
+                                <span class="point-value">40 points</span>
+                            </div>
+                            <div class="point-item point-item--legendaire">
+                                <span class="point-rarity">Fragment Légendaire</span>
+                                <span class="point-value">100 points</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="points-card">
+                        <h3>Valeur des Runes Complètes</h3>
+                        <div class="points-list">
+                            <div class="point-item point-item--rare">
+                                <span class="point-rarity">Rune Rare (4/4)</span>
+                                <span class="point-value">50 points</span>
+                            </div>
+                            <div class="point-item point-item--epique">
+                                <span class="point-rarity">Rune Épique (4/4)</span>
+                                <span class="point-value">250 points</span>
+                            </div>
+                            <div class="point-item point-item--legendaire">
+                                <span class="point-rarity">Rune Légendaire (4/4)</span>
+                                <span class="point-value">500 points</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="points-card">
+                        <h3>Calculateur de Points</h3>
+                        <div id="pointsCalculator" class="calculator">
+                            <div class="calculator-results">
+                                <div class="total-points">
+                                    <span class="total-label">Total des Points:</span>
+                                    <span id="totalPoints" class="total-value">0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Administration -->
+            <section id="admin" class="section">
+                <div class="admin-section">
+                    <h2 class="section__title">Administration du Corps</h2>
+                    
+                    <div class="access-control">
+                        <div class="access-card card">
+                            <div class="card__body">
+                                <h3>Accès Sécurisé</h3>
+                                <p>Cette section est réservée aux dirigeants du Corps des Pourfendeurs.</p>
+                                
+                                <form id="adminAccessForm">
+                                    <div class="form-group">
+                                        <label class="form-label" for="adminPassword">Code d'Accès</label>
+                                        <input type="password" id="adminPassword" class="form-control" placeholder="Entrez le code du Corps">
+                                    </div>
+                                    <button type="submit" class="btn btn--primary">Accéder</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="adminPanel" class="admin-panel hidden">
+                        <div class="admin-controls card">
+                            <div class="card__body">
+                                <h3>Contrôles d'Administration</h3>
+                                <div class="admin-buttons">
+                                    <button id="exportData" class="btn btn--secondary">
+                                        <span class="btn__icon">📤</span>
+                                        Exporter Données
+                                    </button>
+                                    <button id="importData" class="btn btn--secondary">
+                                        <span class="btn__icon">📥</span>
+                                        Importer Données
+                                    </button>
+                                    <button id="refreshData" class="btn btn--secondary">
+                                        <span class="btn__icon">🔄</span>
+                                        Actualiser
+                                    </button>
+                                    <button id="clearAllData" class="btn btn--outline">
+                                        <span class="btn__icon">🗑️</span>
+                                        Vider Tout
+                                    </button>
+                                </div>
+                                <input type="file" id="importFileInput" accept=".json" style="display: none;">
+                            </div>
+                        </div>
+
+                        <div class="admin-logs card">
+                            <div class="card__body">
+                                <h3>Journal d'Activité</h3>
+                                <div id="activityLog" class="activity-log">
+                                    <!-- Logs générés dynamiquement -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="member-management card">
+                            <div class="card__body">
+                                <h3>Gestion des Inventaires</h3>
+                                <p class="management-info">Administration complète des membres et de leurs inventaires avec possibilités de suppression.</p>
+                                <div id="membersList" class="members-list">
+                                    <!-- Liste des membres générée dynamiquement -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Modal de confirmation -->
+    <div id="confirmationModal" class="modal hidden">
+        <div class="modal__overlay">
+            <div class="modal__content">
+                <h3 id="modalTitle">Confirmation</h3>
+                <p id="modalMessage">Êtes-vous sûr de vouloir effectuer cette action ?</p>
+                <div class="modal__actions">
+                    <button class="btn btn--secondary" id="modalCancel">Annuler</button>
+                    <button class="btn btn--primary" id="modalConfirm">Confirmer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
